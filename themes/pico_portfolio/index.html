@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8" />
 	
-	<title>{% if meta.title %}{{ meta.title }} | {% endif %}{{ site_title }}</title>
+	<title>{% if not is_front_page and meta.title %}{{ meta.title }} | {% endif %}{{ site_title }}</title>
 {% if meta.description %}
 	<meta name="description" content="{{ meta.description }}"> 
 {% endif %}{% if meta.robots %}
@@ -25,7 +25,7 @@
 				#}
 				{# In the header, any page not marked portfolio goes in the nav #}
 				{% for page in pages %}
-				{% if not page.portfolio %}
+				{% if not page.portfolio and page.title %}
 				<li><a href="{{ page.url }}">{{ page.title }}</a></li>
 				{% endif %}
 				{% endfor %}

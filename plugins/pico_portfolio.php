@@ -47,10 +47,10 @@ class Pico_Portfolio {
 	public function before_read_file_meta(&$headers)
 	{
 		/* Add additional meta data fields. */
-		$headers['tags'] = 'Tags'; // tags go here
-		$headers['image'] = 'Image'; // header image goes here
 		$headers['portfolio'] = 'Portfolio'; // this just needs to be present to indicate it's a portfolio piece
 		$headers['order'] = 'Order'; // set the sort order for portfolio pieces
+		$headers['tags'] = 'Tags'; // tags go here
+		$headers['image'] = 'Image'; // header image goes here
 	}
 	
 	public function file_meta(&$meta)
@@ -76,12 +76,27 @@ class Pico_Portfolio {
 		if(isset($page_meta['tags']))
 			$data['tags'] = $page_meta['tags'];
 		if(isset($page_meta['image']))
-			$data['image'] = $page_meta['image'];	
+			$data['image'] = $page_meta['image'];
+		if(isset($page_meta['order']))
+			$data['order'] = $page_meta['order'];		
 	}
 	
 	public function get_pages(&$pages, &$current_page, &$prev_page, &$next_page)
 	{
-
+		/*
+			Sort the array of pages by the value set in the order field.
+			Pages that don't have an order value will sit at the front of the array
+			in their original order.
+		*/
+		$tmp = array();
+		foreach($pages as $page) {
+			if(isset($page['order'])) {
+				$tmp[] = $page['order'];
+			} else {
+				$tmp[] = 999999;
+			}
+		}
+		array_multisort($tmp, $pages);
 	}
 	
 	public function before_twig_register()

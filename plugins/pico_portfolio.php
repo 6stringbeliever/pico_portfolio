@@ -93,7 +93,7 @@ class Pico_Portfolio {
 			if(isset($page['order'])) {
 				$tmp[] = $page['order'];
 			} else {
-				$tmp[] = 999999;
+				$tmp[] = null;
 			}
 		}
 		array_multisort($tmp, $pages);

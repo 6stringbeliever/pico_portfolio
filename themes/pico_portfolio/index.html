@@ -40,6 +40,9 @@
 				{% if page.portfolio %}
 				<li>
 					<h2><a href="{{ page.url }}">{{ page.title }}</a></h2>
+					{% if page.image %}
+					<img src="{{ theme_url }}/images/{{ page.image }}" alt="Cover image for {{ page.title }}" />
+					{% endif %}
 					{% if page.description %}
 					<p>{{ page.description }}</p>
 					{% endif %}
@@ -60,7 +63,7 @@
 	
 	<footer id="footer">
 		<div class="inner">
-			&copy; 2014. Powered by <a href="http://picocms.org/">Pico</a> using <a href="https://github.com/6stringbeliever/pico_portfolio">Pico Portfolio</a>.
+			&copy; 2014{% if config.site_owner %} {{ config.site_owner }}{% endif %}. Powered by <a href="http://picocms.org/">Pico</a> using <a href="https://github.com/6stringbeliever/pico_portfolio">Pico Portfolio</a>.
 		</div>
 	</footer>
     

@@ -38,7 +38,7 @@ Pico Portfolio adds the following page meta data fields:
 	
 They do the following:
 
-* __Portfolio__ - Add this field to turn any page into a portfolio item page. Any value here will do. Pico Portfolio only checks for the presence of the field. In the default theme, any item that is not a portfolio page goes in the menu.
+* __Portfolio__ - Add this field to turn any page into a portfolio item page. Any value here will do. Pico Portfolio only checks for the presence of the field. In the pico_portfolio theme, any item that is not a portfolio page goes in the menu.
 * __Order__ - Add this field to arbitrarily order the list of portfolio item pages. Does not have to be 1, 2, 3 order. 10, 17, 3645 works just as well. Any portfolio items not marked with order will be ordered in the default ordering and put at the back of the list.
 * __Tags__ - Add this to tag items. Tags are space-delimited.
 * __Image__ - Default image for the portfolio item. Using the pico_portfolio theme, you should place this image in the themes/pico_portfolio/images folder.
@@ -52,13 +52,15 @@ Pico Portfolio adds the following fields to the config.php file:
 	
 They do the following:
 
-* default_tag_file - By deafult, the pico_portfolio theme displays requests for tags/whatever using the index.md file. If you want to use a different file (say, tags.md), specifiy that here.
-* site_owner - The pico_portfolio theme uses this value if it exists for the copyright statement in the footer.
+* __default_tag_file__ - By deafult, the pico_portfolio theme displays requests for tags/whatever using the index.md file. If you want to use a different file (say, tag.md), specifiy that here.
+* __site_owner__ - The pico_portfolio theme uses this value if it exists for the copyright statement in the footer.
 
 ### Theme
+
+[ Coming soon ]
 
 ## TODO
 
 * /tags/ blank page should display all items, too
-* pass the list of requested tags to the template
+* Pass the list of requested tags to the template
 * Finish theme

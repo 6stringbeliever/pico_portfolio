@@ -34,11 +34,14 @@
 	</header>
 	<section id="content">
 		<div class="inner">
-			{% if is_front_page %}
+			{{ content }}
+		
+			{% if is_front_page or is_tag_request %}
+
 			<ul>
 				{% for page in pages %}
-				{% if page.portfolio %}
-				<li>
+				{% if (is_front_page and page.portfolio) or (is_tag_request and page.has_requested_tag) %}
+				<li {% if page.tags %}data-tags="{% for a_tag in page.tags %}{{ a_tag }}{% if not loop.last %} {% endif %}{% endfor %}"{% endif %}>
 					<h2><a href="{{ page.url }}">{{ page.title }}</a></h2>
 					{% if page.image %}
 					<img src="{{ theme_url }}/images/{{ page.image }}" alt="Cover image for {{ page.title }}" />
@@ -47,15 +50,16 @@
 					<p>{{ page.description }}</p>
 					{% endif %}
 					{% if page.tags %}
-					<p>{{ page.tags }}</p>
+					<p>
+					{% for a_tag in page.tags %}
+					<a href="{{ base_url }}/tags/{{ a_tag }}">{{ a_tag }}</a> 
+					{% endfor %}
+					</p>
 					{% endif %}
 				</li>
 				{% endif %}
 				{% endfor %}
 			</ul>
-			{% else %}
-
-			{{ content }}
 			
 			{% endif %}
 		</div>

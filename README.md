@@ -62,5 +62,4 @@ They do the following:
 ## TODO
 
 * /tags/ blank page should display all items, too
-* Pass the list of requested tags to the template
 * Finish theme

@@ -12,11 +12,7 @@ class Pico_Portfolio {
 	private $default_tag_file;
 	private $is_tag_request = false;
 	private $requested_tags;
-
-	public function plugins_loaded()
-	{
-		
-	}
+	private $tag_list = array();
 
 	public function config_loaded(&$settings)
 	{
@@ -27,11 +23,6 @@ class Pico_Portfolio {
 		if(!isset($settings['default_tag_file']))
 			$settings['default_tag_file'] = 'index'. CONTENT_EXT;
 		$this->default_tag_file = CONTENT_DIR . $settings['default_tag_file'];
-	}
-	
-	public function request_url(&$url)
-	{
-		
 	}
 	
 	public function before_load_content(&$file)
@@ -51,21 +42,6 @@ class Pico_Portfolio {
 		}
 	}
 	
-	public function after_load_content(&$file, &$content)
-	{
-		
-	}
-	
-	public function before_404_load_content(&$file)
-	{
-		
-	}
-	
-	public function after_404_load_content(&$file, &$content)
-	{
-
-	}
-	
 	public function before_read_file_meta(&$headers)
 	{
 		/* Add additional meta data fields. */
@@ -73,21 +49,6 @@ class Pico_Portfolio {
 		$headers['order'] = 'Order'; // set the sort order for portfolio pieces
 		$headers['tags'] = 'Tags'; // tags go here
 		$headers['image'] = 'Image'; // header image goes here
-	}
-	
-	public function file_meta(&$meta)
-	{
-		
-	}
-
-	public function before_parse_content(&$content)
-	{
-		
-	}
-	
-	public function after_parse_content(&$content)
-	{
-		
 	}
 	
 	public function get_page_data(&$data, $page_meta)
@@ -108,7 +69,8 @@ class Pico_Portfolio {
 		/*
 			If this is a tag request, go through pages
 			and check to see if requested tag is included.
-			Only include those with tag in list.
+			Mark those with the tag as has_requested_tag
+			in page data.
 		*/
 		if($this->is_tag_request && strlen($this->requested_tags) > 0) {
 			foreach($pages as &$page) {
@@ -120,9 +82,12 @@ class Pico_Portfolio {
 		/*
 			Sort the array of pages by the value set in the order field.
 			Pages that don't have an order value will sit at the back of the array.
+			While we're going through the pages, create the list of tags, too.
 		*/
 		$tmp = array();
 		foreach($pages as $pg) {
+			if(isset($pg['tags']))
+				$this->add_to_tag_list($pg['tags']);
 			if(!empty($pg['order'])) {
 				$tmp[] = $pg['order'];
 			} else {
@@ -131,26 +96,34 @@ class Pico_Portfolio {
 		}
 		array_multisort($tmp, $pages);
 	}
-	
-	public function before_twig_register()
-	{
-		
-	}
-	
+
 	
 	public function before_render(&$twig_vars, &$twig, &$template)
 	{
-		/*
-			Adds is_tag_request to twig vars
-		*/
+		/* Adds is_tag_request to twig vars */
 		$twig_vars['is_tag_request'] = $this->is_tag_request;
-	}
-	
-	public function after_render(&$output)
-	{
 		
+		/* Adds list of tags used */
+		$twig_vars['tag_list'] = $this->tag_list;
+		
+		/* Adds requested tag */
+		$twig_vars['requested_tags'] = $this->requested_tags;
 	}
+
 	
+	/*
+		Add an array of tags to the list of tags used. Goes through
+		the tags in the array and adds the tag if it's not already
+		in the list.
+		
+		@param tags Array of tags.	
+	*/
+	private function add_to_tag_list($tags) 
+	{
+		foreach($tags as $tag)
+			if(!in_array($tag, $this->tag_list))
+				$this->tag_list[] = $tag;
+	}
 }
 
 ?>

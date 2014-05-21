@@ -52,7 +52,7 @@ Pico Portfolio adds the following fields to the config.php file:
 	
 They do the following:
 
-* __default_tag_file__ - By deafult, the pico_portfolio theme displays requests for tags/whatever using the index.md file. If you want to use a different file (say, tag.md), specifiy that here.
+* __default_tag_file__ - By default, the pico_portfolio theme displays requests for tags/whatever using the index.md file. If you want to use a different file (say, tag.md), specify that here, relative to the content directory.
 * __site_owner__ - The pico_portfolio theme uses this value if it exists for the copyright statement in the footer.
 
 ### Theme

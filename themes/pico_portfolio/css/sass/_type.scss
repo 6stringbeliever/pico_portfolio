@@ -1,0 +1,33 @@
+body {
+	font-family: $main-text-font-stack;
+	font-size: $base-font-size;
+	line-height: 1.5;
+	color: $main-text-color;
+}
+
+h1 {
+	font-size: 2.5em;
+	font-weight: normal;
+	line-height: 1;
+	text-align: center;
+	&:before, &:after {
+		content: "\2014";
+	}
+}
+
+h1 a {
+	color: $main-text-color;
+	text-decoration: none;
+}
+
+h2 {
+	font-family: $sub-heading-font-stack;
+}
+
+.nav li {
+	font-family: $sub-heading-font-stack;
+	a {
+		color: $main-text-color;
+		text-decoration: none;
+	}
+}

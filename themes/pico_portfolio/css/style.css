@@ -354,7 +354,85 @@ td,
 th {
   padding: 0; }
 
+/* Clearfix 
+   From: http://nicolasgallagher.com/micro-clearfix-hack/
+   ========================================================================== */
+  /**
+* For modern browsers
+* 1. The space content is one way to avoid an Opera bug when the
+*    contenteditable attribute is included anywhere else in the document.
+*    Otherwise it causes space to appear at the top and bottom of elements
+*    that are clearfixed.
+* 2. The use of `table` rather than `block` is only necessary if using
+*    `:before` to contain the top-margins of child elements.
+*/
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */ }
+
+.clearfix:after {
+  clear: both; }
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.clearfix {
+  *zoom: 1; }
+
+/*
+Variables
+*/
+body {
+  font-family: Georgia, "Times New Romain", Times, Serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333333; }
+
+h1 {
+  font-size: 2.5em;
+  font-weight: normal;
+  line-height: 1;
+  text-align: center; }
+  h1:before, h1:after {
+    content: "\2014"; }
+
+h1 a {
+  color: #333333;
+  text-decoration: none; }
+
+h2 {
+  font-family: Helvetica, Arial, serif; }
+
+.nav li {
+  font-family: Helvetica, Arial, serif; }
+  .nav li a {
+    color: #333333;
+    text-decoration: none; }
+
+#header, #content, #footer {
+  max-width: 1080px;
+  margin: 0 auto; }
+
 .nav {
-  padding-left: 0; }
+  padding-left: 0;
+  text-align: center; }
   .nav li {
-    display: inline; }
+    display: inline;
+    border-right: 1px solid black;
+    padding: 0 0.5em; }
+  .nav li:last-child {
+    border-right: none; }
+
+.portfolioitemlist {
+  padding-left: 0; }
+
+.portfolioitem {
+  float: left;
+  display: block; }
+
+footer {
+  clear: all; }

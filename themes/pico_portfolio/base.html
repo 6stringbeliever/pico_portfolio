@@ -21,25 +21,27 @@
 	<header id="header">
 		<div class="inner clearfix">
 			<h1><a href="{{ base_url }}">{{ site_title }}</a></h1>
+			{#
+				If you want to add any additional items (email link, Twitter, etc.) to the header,
+				just add a new list item before or after the for loop.
+			#}
+			{# In the header, any page not marked portfolio goes in the nav #}
+			<nav>
 			<ul class="nav">
-				{#
-					If you wnat to add any additional items (email link, Twitter, etc.) to the header,
-					just add a new list item before or after the for loop.
-				#}
-				{# In the header, any page not marked portfolio goes in the nav #}
 				{% for page in pages %}
 				{% if not page.portfolio and page.title %}
 				<li><a href="{{ page.url }}">{{ page.title }}</a></li>
 				{% endif %}
 				{% endfor %}
 			</ul>
+			</nav>
 		</div>
 	</header>
 	{% endblock %}
 	{% block content %}
 	<section id="content">
-		<div class="inner">
-			{{ content }}
+		<div class="inner clearfix">
+			{% block indexmdcontent %}{{ content }}{% endblock %}
 			
 			
 			
@@ -52,10 +54,10 @@
 			</p>
 
 
-			<ul>
+			<ul class="portfolioitemlist">
 				{% for page in pages %}
 				{% if (is_front_page and page.portfolio) or (is_tag_request and page.has_requested_tag) %}
-				<li {% if page.tags %}data-tags="{% for a_tag in page.tags %}{{ a_tag }}{% if not loop.last %} {% endif %}{% endfor %}"{% endif %}>
+				<li class="portfolioitem" {% if page.tags %}data-tags="{% for a_tag in page.tags %}{{ a_tag }}{% if not loop.last %} {% endif %}{% endfor %}"{% endif %}>
 					<h2><a href="{{ page.url }}">{{ page.title }}</a></h2>
 					{% if page.image %}
 					<img src="{{ theme_url }}/images/{{ page.image }}" alt="Cover image for {{ page.title }}" />

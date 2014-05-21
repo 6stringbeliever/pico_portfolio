@@ -1,7 +1,32 @@
+#header, #content, #footer{
+	max-width: $gs-max-width;
+	margin: 0 auto;
+}
+
 .nav {
 	padding-left: 0;
+	text-align: center;
 	li {
 		display: inline;
+		border-right: 1px solid black;
+		padding: 0 0.5em;
+	}
+	
+	li:last-child {
+		border-right: none;
 	}
 }
-	
+
+.portfolioitemlist {
+	padding-left: 0;
+}
+
+.portfolioitem {
+	float: left;
+	display: block;
+}
+
+footer {
+	clear: all;
+}
+

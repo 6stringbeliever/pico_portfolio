@@ -57,9 +57,17 @@ They do the following:
 
 ### Theme
 
-[ Coming soon ]
+Pico Portfolio passes the following additional fields to the templates:
+
+- __is_tag_request__ - Boolean. Indicates if the request is to a tags/ URL.
+- __page.has_requested_tag__ - Boolean. Because all pages are needed to display the navigation items, on a tag request, Pico Portfolio uses this template field to indicate if the page has the tag requested. For example, this would return true if a page was tagged "web" and the tag request was to url.com/tags/web.
+- __page.image__ - The file name of the header image for the portfolio page. The Pico Portfolio template looks for these in themes/pico_portfolio/images.
+- __page.tags__ - An array of all the tags assigned to the page.
+
+You can use the Pico Portfolio index template to customize the content that is displayed by overriding the many blocks in the base.html file.
+
+The styles for the Pico Portfolio template are built in SASS. You can make simple changes to styles and color just by adjusting the values in _variables.scss. Or you can customize further by editing any of the SASS files and recompiling style.css.
 
 ## TODO
 
-* /tags/ blank page should display all items, too
 * Finish theme

@@ -12,6 +12,9 @@
 {% endif %}
 	
 	{% block stylesandscripts %}
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="{{ theme_url }}/js/tagswitcher.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Merriweather+Sans:400,300,700,300italic,400italic,700italic,800italic|Merriweather:300,700,300italic' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="{{ theme_url }}/css/style.css" type="text/css" />
 	{% endblock %}
 	{% endblock %}
@@ -43,16 +46,17 @@
 		<div class="inner clearfix">
 			{% block indexmdcontent %}{{ content }}{% endblock %}
 			
-			
-			
 			{% if is_front_page or is_tag_request %}
 
-			<p class="taglist">
+			<p class="taglist">Roles: 
 			{% for a_tag in tag_list %}
-			<a href="{{ base_url }}/tags/{{ a_tag }}">{{ a_tag }}</a>{% if not loop.last %} {% endif %}
+			<a href="{{ base_url }}/tags/{{ a_tag }}" class="tagselect" data-tagfor="{{ a_tag }}">{{ a_tag }}</a>{% if not loop.last %} {% endif %}
 			{% endfor %}
 			</p>
-
+			
+			{% if is_tag_request %}
+			<p>Showing items tagged: {{ requested_tags }}</p>
+			{% endif %}
 
 			<ul class="portfolioitemlist">
 				{% for page in pages %}
@@ -60,7 +64,7 @@
 				<li class="portfolioitem" {% if page.tags %}data-tags="{% for a_tag in page.tags %}{{ a_tag }}{% if not loop.last %} {% endif %}{% endfor %}"{% endif %}>
 					<h2><a href="{{ page.url }}">{{ page.title }}</a></h2>
 					{% if page.image %}
-					<img src="{{ theme_url }}/images/{{ page.image }}" alt="Cover image for {{ page.title }}" />
+					<a href="{{ page.url }}"><img src="{{ theme_url }}/images/{{ page.image }}" alt="Cover image for {{ page.title }}" /></a>
 					{% endif %}
 					{% if page.description %}
 					<p>{{ page.description }}</p>
@@ -68,7 +72,7 @@
 					{% if page.tags %}
 					<p>
 					{% for a_tag in page.tags %}
-					<a href="{{ base_url }}/tags/{{ a_tag }}">{{ a_tag }}</a>{% if not loop.last %} {% endif %}
+					<a href="{{ base_url }}/tags/{{ a_tag }}" class="itemtag">{{ a_tag }}</a>{% if not loop.last %} {% endif %}
 					{% endfor %}
 					</p>
 					{% endif %}
@@ -89,6 +93,10 @@
 	</footer>
 	{% endblock %}
 
-{% block footercode %}{% endblock %}
+{% block footercode %}
+<script>
+	$(document).ready(readyFunction);
+</script>
+{% endblock %}
 </body>
 </html>

@@ -387,7 +387,7 @@ th {
 Variables
 */
 body {
-  font-family: Georgia, "Times New Romain", Times, Serif;
+  font-family: "Merriweather", Georgia, "Times New Romain", Times, Serif;
   font-size: 16px;
   line-height: 1.5;
   color: #333333; }
@@ -400,21 +400,37 @@ h1 {
   h1:before, h1:after {
     content: "\2014"; }
 
-h1 a {
+h1 a, h2 a {
   color: #333333;
   text-decoration: none; }
 
 h2 {
-  font-family: Helvetica, Arial, serif; }
+  font-family: "Merriweather Sans", Helvetica, Arial, serif;
+  font-weight: normal;
+  font-size: 1.5em;
+  line-height: 1;
+  padding-left: 0.25em;
+  margin: 0.5em 0 0.25em 0; }
+
+a {
+  text-decoration: none;
+  color: #0023e1; }
+
+a:hover {
+  text-decoration: underline; }
+
+a:visted {
+  color: #4758bd; }
 
 .nav li {
-  font-family: Helvetica, Arial, serif; }
+  font-family: "Merriweather Sans", Helvetica, Arial, serif;
+  font-weight: bold; }
   .nav li a {
     color: #333333;
     text-decoration: none; }
 
 #header, #content, #footer {
-  max-width: 1080px;
+  max-width: 1060px;
   margin: 0 auto; }
 
 .nav {
@@ -428,11 +444,21 @@ h2 {
     border-right: none; }
 
 .portfolioitemlist {
-  padding-left: 0; }
+  padding: 0;
+  margin: 0 -20px 0 0; }
 
 .portfolioitem {
+  background-color: #eeeeee;
   float: left;
-  display: block; }
+  display: inline;
+  margin-left: 0;
+  margin-right: 20px;
+  width: 340px;
+  margin-bottom: 2em; }
+
+.portfolioitem img {
+  max-width: 100%; }
 
 footer {
-  clear: all; }
+  clear: all;
+  padding: 2em 0; }

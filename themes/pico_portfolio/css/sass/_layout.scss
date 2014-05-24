@@ -11,22 +11,28 @@
 		border-right: 1px solid black;
 		padding: 0 0.5em;
 	}
-	
 	li:last-child {
 		border-right: none;
 	}
 }
 
 .portfolioitemlist {
-	padding-left: 0;
+	padding: 0;
+	margin: 0 -20px 0 0;
 }
 
 .portfolioitem {
-	float: left;
-	display: block;
+	background-color: #eeeeee;
+	@include grid-column(4);
+	margin-bottom: 2em;
+}
+
+.portfolioitem img {
+	max-width: 100%;
 }
 
 footer {
 	clear: all;
+	padding: 2em 0;
 }
 

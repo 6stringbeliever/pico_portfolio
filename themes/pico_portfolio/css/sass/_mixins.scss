@@ -1,0 +1,7 @@
+@mixin grid-column($columns, $colwidth: $gs-column, $gutter: $gs-gutter) {
+	float: left;
+	display: inline;
+	margin-left: 0;
+	margin-right: $gutter;
+	width: ($columns * $colwidth) + (($columns - 1) * $gutter);
+}

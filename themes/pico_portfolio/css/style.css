@@ -387,7 +387,7 @@ th {
 Variables
 */
 body {
-  font-family: "Merriweather", Georgia, "Times New Romain", Times, Serif;
+  font-family: "Playfair Display", "Merriweather", Georgia, "Times New Romain", Times, Serif;
   font-size: 16px;
   line-height: 1.5;
   color: #333333; }
@@ -405,12 +405,10 @@ h1 a, h2 a {
   text-decoration: none; }
 
 h2 {
-  font-family: "Merriweather Sans", Helvetica, Arial, serif;
+  font-family: "Montserrat", "Merriweather Sans", Helvetica, Arial, serif;
   font-weight: normal;
   font-size: 1.5em;
-  line-height: 1;
-  padding-left: 0.25em;
-  margin: 0.5em 0 0.25em 0; }
+  line-height: 1; }
 
 a {
   text-decoration: none;
@@ -422,16 +420,49 @@ a:hover {
 a:visted {
   color: #4758bd; }
 
+.taginfo {
+  font-family: "Montserrat", "Merriweather Sans", Helvetica, Arial, serif;
+  font-size: 1em;
+  line-height: 1em;
+  font-weight: 300; }
+
+.tagselect {
+  display: inline-block;
+  text-decoration: none;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  background-color: #7cb4f5;
+  border: 1px solid #639cdc;
+  padding: 0.2em 0.4em;
+  color: white;
+  font-weight: 400; }
+
+.tagselect:hover {
+  text-decoration: none;
+  background-color: #639cdc; }
+
 .nav li {
-  font-family: "Merriweather Sans", Helvetica, Arial, serif;
+  font-family: "Montserrat", "Merriweather Sans", Helvetica, Arial, serif;
   font-weight: bold; }
   .nav li a {
     color: #333333;
     text-decoration: none; }
 
+.portfolioitem h2 {
+  padding-left: 0.5em;
+  margin: 0.5em 0 0.25em 0; }
+
+.portfolioitemtaglist {
+  margin: 0.25em 0.5em 0.5em 0.5em; }
+
 #header, #content, #footer {
   max-width: 1060px;
   margin: 0 auto; }
+  @media screen and (max-width: 1177.77778px) {
+    #header, #content, #footer {
+      width: 90%; } }
 
 .nav {
   padding-left: 0;
@@ -455,9 +486,15 @@ a:visted {
   margin-right: 20px;
   width: 340px;
   margin-bottom: 2em; }
+  .portfolioitem img {
+    max-width: 100%; }
+  .portfolioitem:nth-child(3n+1) {
+    clear: both; }
 
-.portfolioitem img {
-  max-width: 100%; }
+.taginfo {
+  border-top: 1px solid #bbbbbb;
+  border-bottom: 1px solid #bbbbbb;
+  margin-bottom: 2em; }
 
 footer {
   clear: all;

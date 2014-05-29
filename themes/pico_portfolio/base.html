@@ -15,6 +15,7 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="{{ theme_url }}/js/tagswitcher.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Merriweather+Sans:400,300,700,300italic,400italic,700italic,800italic|Merriweather:300,700,300italic' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Playfair+Display:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="{{ theme_url }}/css/style.css" type="text/css" />
 	{% endblock %}
 	{% endblock %}
@@ -44,20 +45,26 @@
 	{% block content %}
 	<section id="content">
 		<div class="inner clearfix">
-			{% block indexmdcontent %}{{ content }}{% endblock %}
+			{% block indexdotmdcontent %}{{ content }}{% endblock %}
 			
 			{% if is_front_page or is_tag_request %}
-
+			
+			<div class="taginfo">
+			
 			<p class="taglist">Roles: 
 			{% for a_tag in tag_list %}
 			<a href="{{ base_url }}/tags/{{ a_tag }}" class="tagselect" data-tagfor="{{ a_tag }}">{{ a_tag }}</a>{% if not loop.last %} {% endif %}
 			{% endfor %}
 			</p>
 			
-			{% if is_tag_request %}
-			<p>Showing items tagged: {{ requested_tags }}</p>
+			{% if requested_tags %}
+			<p id="tagsshown">Showing items tagged: {{ requested_tags }}</p>
+			{% else %}
+			<p id="tagsshown">Showing all items.</p>
 			{% endif %}
 
+			</div>
+			
 			<ul class="portfolioitemlist">
 				{% for page in pages %}
 				{% if (is_front_page and page.portfolio) or (is_tag_request and page.has_requested_tag) %}
@@ -70,7 +77,7 @@
 					<p>{{ page.description }}</p>
 					{% endif %}
 					{% if page.tags %}
-					<p>
+					<p class="portfolioitemtaglist">
 					{% for a_tag in page.tags %}
 					<a href="{{ base_url }}/tags/{{ a_tag }}" class="itemtag">{{ a_tag }}</a>{% if not loop.last %} {% endif %}
 					{% endfor %}

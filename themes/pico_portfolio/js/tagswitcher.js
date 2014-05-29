@@ -18,14 +18,32 @@ function readyFunction() {
 	Hide or show as appropriate
 */
 function hideIfNoTag(tagfor) {
-	console.log("click!");
+	var numcols = getFrontPageColumns();
+	var itemnum = 0;
 	$(".portfolioitem").each(function() {
 		var tags = $(this).data("tags").split(" ");
-		console.log(tags);
 		if($.inArray(tagfor, tags) == -1) {
+			// doesn't have tag
 			$(this).hide(350);
 		} else {
+			// has tag
 			$(this).show(350);
+			itemnum++;
+		}
+		if (itemnum % (numcols + 1) == 0) {
+			$(this).css("clear", "both");
+		} else {
+			$(this).css("clear", "none");
 		}
 	});
+}
+
+/*
+	@todo This shouldn't hard code the margin/gutter values
+	@return the number of portfolio item columns on the front page
+*/
+function getFrontPageColumns() {
+	var tempcol = Math.floor(($(".portfolioitemlist").width() - 20) / $(".portfolioitem").width());
+	var gutter = (tempcol -1) * 20; // TODO - Don't hardcode the margin; also, breaks down if too many cols
+	return Math.floor(($(".portfolioitemlist").width() - 20 - gutter) / $(".portfolioitem").width());
 }

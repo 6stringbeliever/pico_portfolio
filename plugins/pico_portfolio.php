@@ -121,7 +121,7 @@ class Pico_Portfolio {
 	private function add_to_tag_list($tags) 
 	{
 		foreach($tags as $tag)
-			if(!in_array($tag, $this->tag_list))
+			if(!in_array($tag, $this->tag_list) and $tag != "")
 				$this->tag_list[] = $tag;
 	}
 }

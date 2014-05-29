@@ -1,6 +1,10 @@
 #header, #content, #footer{
 	max-width: $gs-max-width;
 	margin: 0 auto;
+	// 
+	@media screen and (max-width: $gs-max-width / 0.9) { 
+		width: 90%;
+	}
 }
 
 .nav {
@@ -19,16 +23,25 @@
 .portfolioitemlist {
 	padding: 0;
 	margin: 0 -20px 0 0;
+
 }
 
 .portfolioitem {
 	background-color: #eeeeee;
 	@include grid-column(4);
 	margin-bottom: 2em;
+	img {
+		max-width: 100%;
+	}
+	&:nth-child(3n+1) {
+		clear: both;
+	}
 }
 
-.portfolioitem img {
-	max-width: 100%;
+.taginfo {
+	border-top: 1px solid #bbbbbb;
+	border-bottom: 1px solid #bbbbbb;
+	margin-bottom: 2em;
 }
 
 footer {

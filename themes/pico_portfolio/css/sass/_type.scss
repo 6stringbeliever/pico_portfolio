@@ -25,8 +25,6 @@ h2 {
 	font-weight: normal;
 	font-size: 1.5em;
 	line-height: 1;
-	padding-left: 0.25em;
-	margin: 0.5em 0 0.25em 0;
 }
 
 a {
@@ -43,6 +41,31 @@ a:visted {
 	color: $link-followed-color;
 }
 
+.taginfo {
+	font-family: $sub-heading-font-stack;
+	font-size: 1em;
+	line-height: 1em;
+	font-weight: 300;
+}
+
+.tagselect {
+	display: inline-block;
+	text-decoration: none;
+	@include border-radius(4px);
+	background-color: #7cb4f5;
+	border: 1px solid #639cdc;
+	padding: 0.2em 0.4em;
+	color: white;
+	font-weight: 400;
+}
+
+.tagselect:hover {
+	text-decoration: none;
+	background-color: #639cdc;
+}
+
+
+
 .nav li {
 	font-family: $sub-heading-font-stack;
 	font-weight: bold;
@@ -50,4 +73,13 @@ a:visted {
 		color: $main-text-color;
 		text-decoration: none;
 	}
+}
+
+.portfolioitem h2 {
+	padding-left: 0.5em;
+	margin: 0.5em 0 0.25em 0;
+}
+
+.portfolioitemtaglist {
+	margin: 0.25em 0.5em 0.5em 0.5em;
 }

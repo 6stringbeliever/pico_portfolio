@@ -1,9 +1,13 @@
-@mixin grid-column($columns, $colwidth: $gs-column, $gutter: $gs-gutter) {
+@function grid-width($columns) {
+	@return ($columns * $gs-column) + (($columns - 1) * $gs-gutter);
+}
+
+@mixin grid-column($columns) {
 	float: left;
 	display: inline;
 	margin-left: 0;
 	margin-right: $gutter;
-	width: ($columns * $colwidth) + (($columns - 1) * $gutter);
+	width: grid-width($columns);
 }
 
 @mixin border-radius($radius) {

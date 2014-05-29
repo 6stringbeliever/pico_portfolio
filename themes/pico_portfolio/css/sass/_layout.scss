@@ -1,7 +1,6 @@
 #header, #content, #footer{
 	max-width: $gs-max-width;
-	margin: 0 auto;
-	// 
+	margin: 0 auto; 
 	@media screen and (max-width: $gs-max-width / 0.9) { 
 		width: 90%;
 	}
@@ -12,7 +11,7 @@
 	text-align: center;
 	li {
 		display: inline;
-		border-right: 1px solid black;
+		border-right: 1px solid $main-text-color;
 		padding: 0 0.5em;
 	}
 	li:last-child {
@@ -27,24 +26,25 @@
 }
 
 .portfolioitem {
-	background-color: #eeeeee;
-	@include grid-column(4);
+	display: inline-block;
+	width: grid-width(4);
+	vertical-align: top;
+	background-color: $portfolio-item-bg-color;
+	margin-right: $gs-gutter;
 	margin-bottom: 2em;
 	img {
 		max-width: 100%;
 	}
-	&:nth-child(3n+1) {
-		clear: both;
-	}
 }
 
 .taginfo {
-	border-top: 1px solid #bbbbbb;
-	border-bottom: 1px solid #bbbbbb;
+	border-top: 1px solid $separator-line;
+	border-bottom: 1px solid $separator-line;
 	margin-bottom: 2em;
 }
 
 footer {
+	border-top: 1px solid $separator-line;
 	clear: all;
 	padding: 2em 0;
 }

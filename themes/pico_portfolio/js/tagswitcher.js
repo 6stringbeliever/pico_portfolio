@@ -1,14 +1,20 @@
 /*
 	$(document).ready function
 */
-function readyFunction() {
+function inittagswitch(tagclass) {
 	/*
 		Hijack clicks on tag list and show/hide
 		portfolio items as appropriate.
+		Sets the clear selected tag function.
 	*/
-	$(".tagselect").click(function(event) {
+	$(tagclass).click(function(event) {
 		event.preventDefault();
+		setSelectedTag($(this));
 		hideIfNoTag($(this).data("tagfor"));
+	});
+	$(".tagclear").click(function(event) {
+		event.preventDefault();
+		clearSelectedTag();
 	});
 }
 
@@ -30,4 +36,24 @@ function hideIfNoTag(tagfor) {
 			itemnum++;
 		}
 	});
+}
+
+/*
+	Sets selected class on selected tag in list
+	Clears selected tag from last selected.
+*/
+function setSelectedTag(selected) {
+	$(".tagselected").removeClass("tagselected");
+	$(".tagclear").show();
+	selected.addClass("tagselected");
+}
+
+/*
+	Clears the selected tag display and shows all
+	portfolio items.
+*/
+function clearSelectedTag() {
+	$(".tagselected").removeClass("tagselected");
+	$(".tagclear").hide();
+	$(".portfolioitem").show(350);
 }

@@ -41,11 +41,15 @@ a:visted {
 	color: $link-followed-color;
 }
 
+.taginfo {
+	padding: 0 0.5em;
+}
+
 .taginfo, .portfolioitemtaglist {
 	font-family: $sub-heading-font-stack;
 	font-size: 1em;
 	line-height: 1em;
-	font-weight: 300;
+	font-weight: normal;
 }
 
 .tagselect, .itemtag {
@@ -55,12 +59,26 @@ a:visted {
 	background-color: $tag-bg;
 	border: 1px solid $tag-border;
 	padding: 0.2em 0.4em;
+	margin: 0 0.2em 0.3em 0;
 	color: $tag-text;
 	font-weight: 400;
 	&:hover {
 		text-decoration: none;
 		background-color: $tag-hover;
 	}
+}
+
+.tagselected {
+	background-color: $tag-selected;
+	&:hover {
+		background-color: $tag-selected * 0.8;
+	}
+}
+
+.tagclear {
+	display: none;
+	font-weight: normal;
+	text-decoration: underline;
 }
 
 .nav li {

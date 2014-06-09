@@ -420,11 +420,14 @@ a:hover {
 a:visted {
   color: #4758bd; }
 
+.taginfo {
+  padding: 0 0.5em; }
+
 .taginfo, .portfolioitemtaglist {
   font-family: "Montserrat", "Merriweather Sans", Helvetica, Arial, serif;
   font-size: 1em;
   line-height: 1em;
-  font-weight: 300; }
+  font-weight: normal; }
 
 .tagselect, .itemtag {
   display: inline-block;
@@ -433,14 +436,25 @@ a:visted {
   -moz-border-radius: 4px;
   -ms-border-radius: 4px;
   border-radius: 4px;
-  background-color: #595959;
-  border: 1px solid #4e4e4e;
+  background-color: #8f8f8f;
+  border: 1px solid #7e7e7e;
   padding: 0.2em 0.4em;
+  margin: 0 0.2em 0.3em 0;
   color: #f0f0f0;
   font-weight: 400; }
   .tagselect:hover, .itemtag:hover {
     text-decoration: none;
     background-color: #767676; }
+
+.tagselected {
+  background-color: #3879c3; }
+  .tagselected:hover {
+    background-color: #2c609c; }
+
+.tagclear {
+  display: none;
+  font-weight: normal;
+  text-decoration: underline; }
 
 .nav li {
   font-family: "Montserrat", "Merriweather Sans", Helvetica, Arial, serif;

@@ -11,12 +11,13 @@
 	<meta name="robots" content="{{ meta.robots }}">
 {% endif %}
 	
-	{% block stylesandscripts %}
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script src="{{ theme_url }}/js/tagswitcher.js"></script>
-	<link href='http://fonts.googleapis.com/css?family=Merriweather+Sans:400,300,700,300italic,400italic,700italic,800italic|Merriweather:300,700,300italic' rel='stylesheet' type='text/css'>
+	{% block headerstyle %}
 	<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Playfair+Display:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="{{ theme_url }}/css/style.css" type="text/css" />
+	{% endblock %}
+	{% block headerscript %}
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="{{ theme_url }}/js/tagswitcher.js"></script>
 	{% endblock %}
 	{% endblock %}
 </head>
@@ -53,17 +54,14 @@
 			
 			<div class="taginfo">
 			
-			<p class="taglist">Roles: 
+			<p class="taglist"> 
+			{% spaceless %}
 			{% for a_tag in tag_list %}
-			<a href="{{ base_url }}/tags/{{ a_tag }}" class="tagselect" data-tagfor="{{ a_tag }}">{{ a_tag }}</a>{% if not loop.last %} {% endif %}
+			<a href="{{ base_url }}/tags/{{ a_tag }}" class="tagselect {% if a_tag == requested_tags %}tagselected{% endif %}" data-tagfor="{{ a_tag }}">{{ a_tag }}</a>
 			{% endfor %}
+			<a href="{{ base_url }}" class="tagclear">Show All</a>
+			{% endspaceless %}
 			</p>
-			
-			{% if requested_tags %}
-			<p id="tagsshown">Showing items tagged: {{ requested_tags }}</p>
-			{% else %}
-			<p id="tagsshown">Showing all items.</p>
-			{% endif %}
 
 			</div>
 			
@@ -104,9 +102,9 @@
 	</footer>
 	{% endblock %}
 
-{% block footercode %}
+{% block footerscript %}
 <script>
-	$(document).ready(readyFunction);
+	$(document).ready(inittagswitch(".tagselect"));
 </script>
 {% endblock %}
 </body>

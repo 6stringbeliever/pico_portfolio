@@ -4,7 +4,6 @@
 
 @mixin grid-column($columns) {
 	float: left;
-	display: inline;
 	margin-left: 0;
 	margin-right: $gutter;
 	width: grid-width($columns);

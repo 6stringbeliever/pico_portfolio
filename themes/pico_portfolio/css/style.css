@@ -442,9 +442,10 @@ a:visted {
   margin: 0 0.2em 0.3em 0;
   color: #f0f0f0;
   font-weight: 400; }
-  .tagselect:hover, .itemtag:hover {
-    text-decoration: none;
-    background-color: #767676; }
+
+.tagselect:hover {
+  text-decoration: none;
+  background-color: #767676; }
 
 .tagselected {
   background-color: #3879c3; }

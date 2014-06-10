@@ -52,7 +52,7 @@ a:visted {
 	font-weight: normal;
 }
 
-.tagselect, .itemtag {
+%tag {
 	display: inline-block;
 	text-decoration: none;
 	@include border-radius(4px);
@@ -62,10 +62,18 @@ a:visted {
 	margin: 0 0.2em 0.3em 0;
 	color: $tag-text;
 	font-weight: 400;
+}
+
+.tagselect {
+	@extend %tag;
 	&:hover {
 		text-decoration: none;
 		background-color: $tag-hover;
 	}
+}
+
+.itemtag {
+	@extend %tag;
 }
 
 .tagselected {

@@ -80,7 +80,7 @@
 					{% if page.tags %}
 					<p class="portfolioitemtaglist">
 					{% for a_tag in page.tags %}
-					<a href="{{ base_url }}/tags/{{ a_tag }}" class="itemtag">{{ a_tag }}</a>{% if not loop.last %} {% endif %}
+					<span class="itemtag">{{ a_tag }}</span>
 					{% endfor %}
 					</p>
 					{% endif %}

@@ -27,6 +27,13 @@ h2 {
 	line-height: 1;
 }
 
+h3 {
+	font-family: $sub-heading-font-stack;
+	font-weight: normal;
+	font-size: 1.25em;
+	line-height: 1;
+}
+
 a {
 	text-decoration: none;
 	color: $link-color;

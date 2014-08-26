@@ -24,81 +24,75 @@
 <body>
 	{% block pageheader %}
 	<header id="header">
-		<div class="inner clearfix">
-			<h1><a href="{{ base_url }}">{{ site_title }}</a></h1>
-			{#
-				If you want to add any additional items (email link, Twitter, etc.) to the header,
-				just add a new list item before or after the for loop.
-			#}
-			{# In the header, any page not marked portfolio goes in the nav #}
-			<nav>
-			<ul class="nav">
-				{% spaceless %}
-				{% for page in pages %}
-				{% if not page.portfolio and page.title %}
-				<li><a href="{{ page.url }}">{{ page.title }}</a></li>
-				{% endif %}
-				{% endfor %}
-				{% endspaceless %}
-			</ul>
-			</nav>
-		</div>
+		<h1><a href="{{ base_url }}">{{ site_title }}</a></h1>
+		{#
+			If you want to add any additional items (email link, Twitter, etc.) to the header,
+			just add a new list item before or after the for loop.
+		#}
+		{# In the header, any page not marked portfolio goes in the nav #}
+		<nav>
+		<ul class="nav">
+			{% spaceless %}
+			{% for page in pages %}
+			{% if not page.portfolio and page.title %}
+			<li><a href="{{ page.url }}">{{ page.title }}</a></li>
+			{% endif %}
+			{% endfor %}
+			{% endspaceless %}
+		</ul>
+		</nav>
 	</header>
 	{% endblock %}
 	{% block content %}
 	<section id="content">
-		<div class="inner clearfix">
-			{% block indexdotmdcontent %}{{ content }}{% endblock %}
-			
-			{% if is_front_page or is_tag_request %}
-			
-			<div class="taginfo">
-			
-			<p class="taglist"> 
-			{% spaceless %}
-			{% for a_tag in tag_list %}
-			<a href="{{ base_url }}/tags/{{ a_tag }}" class="tagselect {% if a_tag == requested_tags %}tagselected{% endif %}" data-tagfor="{{ a_tag }}">{{ a_tag }}</a>
-			{% endfor %}
-			<a href="{{ base_url }}" class="tagclear">Show All</a>
-			{% endspaceless %}
-			</p>
+		{% block indexdotmdcontent %}{{ content }}{% endblock %}
+		
+		{% if is_front_page or is_tag_request %}
+		
+		<div class="taginfo">
+		
+		<p class="taglist"> 
+		{% spaceless %}
+		{% for a_tag in tag_list %}
+		<a href="{{ base_url }}/tags/{{ a_tag }}" class="tagselect {% if a_tag == requested_tags %}tagselected{% endif %}" data-tagfor="{{ a_tag }}">{{ a_tag }}</a>
+		{% endfor %}
+		<a href="{{ base_url }}" class="tagclear">Show All</a>
+		{% endspaceless %}
+		</p>
 
-			</div>
-			
-			<ul class="portfolioitemlist">
-				{% spaceless %}
-				{% for page in pages %}
-				{% if (is_front_page and page.portfolio) or (is_tag_request and page.has_requested_tag) %}
-				<li class="portfolioitem" {% if page.tags %}data-tags="{% for a_tag in page.tags %}{{ a_tag }}{% if not loop.last %} {% endif %}{% endfor %}"{% endif %}>
-					<h2><a href="{{ page.url }}">{{ page.title }}</a></h2>
-					{% if page.image %}
-					<a href="{{ page.url }}"><img src="{{ theme_url }}/images/{{ page.image }}" alt="Cover image for {{ page.title }}" /></a>
-					{% endif %}
-					{% if page.description %}
-					<p>{{ page.description }}</p>
-					{% endif %}
-					{% if page.tags %}
-					<p class="portfolioitemtaglist">
-					{% for a_tag in page.tags %}
-					<span class="itemtag">{{ a_tag }}</span>
-					{% endfor %}
-					</p>
-					{% endif %}
-				</li>
-				{% endif %}
-				{% endfor %}
-				{% endspaceless %}
-			</ul>
-			
-			{% endif %}
 		</div>
+		
+		<ul class="portfolioitemlist">
+			{% spaceless %}
+			{% for page in pages %}
+			{% if (is_front_page and page.portfolio) or (is_tag_request and page.has_requested_tag) %}
+			<li class="portfolioitem" {% if page.tags %}data-tags="{% for a_tag in page.tags %}{{ a_tag }}{% if not loop.last %} {% endif %}{% endfor %}"{% endif %}>
+				<h2><a href="{{ page.url }}">{{ page.title }}</a></h2>
+				{% if page.image %}
+				<a href="{{ page.url }}"><img src="{{ theme_url }}/images/{{ page.image }}" alt="Cover image for {{ page.title }}" /></a>
+				{% endif %}
+				{% if page.description %}
+				<p>{{ page.description }}</p>
+				{% endif %}
+				{% if page.tags %}
+				<p class="portfolioitemtaglist">
+				{% for a_tag in page.tags %}
+				<span class="itemtag">{{ a_tag }}</span>
+				{% endfor %}
+				</p>
+				{% endif %}
+			</li>
+			{% endif %}
+			{% endfor %}
+			{% endspaceless %}
+		</ul>
+		
+		{% endif %}
 	</section>
 	{% endblock %}
 	{% block footer %}
 	<footer id="footer">
-		<div class="inner">
 			&copy; 2014{% if config.site_owner %} {{ config.site_owner }}{% endif %}. Powered by <a href="http://picocms.org/">Pico</a> using <a href="https://github.com/6stringbeliever/pico_portfolio">Pico Portfolio</a>.
-		</div>
 	</footer>
 	{% endblock %}
 

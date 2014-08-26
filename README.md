@@ -9,7 +9,7 @@ Pico Portfolio extends [Pico CMS](http://picocms.org/) by adding the following:
 * Allows you to arbitrarily order portfolio items using an order field in page meta data (instead of only by date or alpha).
 * Attach a default image to a portfolio item that can be accessed through the pages list.
 * Adds tagging so that you can tag portfolio items by role, type, etc. Get a list of portfolio items with a certain tag at yoursite.com/picodirectory/tags/thetag
-* [In progress] Includes a nice default portfolio theme that you can easily customize through SASS (or just use as an example to build your own).
+* Includes a nice default portfolio theme that you can easily customize through SASS (or just use as an example to build your own).
 
 ## Installation
 
